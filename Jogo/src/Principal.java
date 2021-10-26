@@ -1,5 +1,5 @@
 
-public class Jogo {
+public class Principal {
 
 	public static void main(String[] args) {
 		System.out.println("Jogo");
