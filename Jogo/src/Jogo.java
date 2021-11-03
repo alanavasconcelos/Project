@@ -7,12 +7,11 @@ public class Jogo {
 	private int[] jogada;
 	private int rodada = 0;
 	private Tabuleiro board;
-	
-	/*private int dificuldade;
 	private int numeroDeBandeirasTotais;
 	private int numeroDeBandeirasAtivas;
+	private int dificuldade;
 	private String nomeDoJogador;
-	private boolean perdeuJogo;*/
+	
 	
 	public Jogo(){
 		
@@ -20,8 +19,18 @@ public class Jogo {
 	public void Jogar(Tabuleiro board){
 		
 	}
-	
-    /*
+	public void setNumeroDeBandeirasTotais(int numeroDeBandeirasTotais) {
+
+		this.numeroDeBandeirasTotais = numeroDeBandeirasTotais;
+
+	}
+
+	public int getNumeroDeBandeirasSobrando() {
+
+		return this.numeroDeBandeirasTotais - this.numeroDeBandeirasAtivas;
+
+	}
+
 	public int getDificuldade() {
 
 		return this.dificuldade;
@@ -38,6 +47,6 @@ public class Jogo {
 
 		return this.nomeDoJogador;
 
-	}*/
+	}
 
 }
