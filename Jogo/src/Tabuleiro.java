@@ -33,14 +33,7 @@ public class Tabuleiro {
 		return 0;
 		
 	}
-	//Para teste com o system.out
-	public void exibe(){
-		
-	}
-	public void preencheDicas(){
-		
-	}
-	public void exibeMinas(){
+	public void Dicas(){
 		
 	}
 	public void iniciaMinas(){

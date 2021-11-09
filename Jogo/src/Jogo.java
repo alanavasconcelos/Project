@@ -10,7 +10,6 @@ public class Jogo {
 	private int numeroDeBandeirasTotais;
 	private int numeroDeBandeirasAtivas;
 	private int dificuldade;
-	private String nomeDoJogador;
 	
 	
 	public Jogo(){
@@ -37,16 +36,5 @@ public class Jogo {
 
 	}
 
-	public void setNomeDoJogador(String nomeDoJogador) {
-
-		this.nomeDoJogador = nomeDoJogador;
-
-	}
-
-	public String getNomeDoJogador() {
-
-		return this.nomeDoJogador;
-
-	}
 
 }
