@@ -1,5 +1,4 @@
 
-import java.util.Scanner;
 import java.util.Random;
 
 public class Tabuleiro {
@@ -8,7 +7,6 @@ public class Tabuleiro {
 	private char tabuleiro[][];
 	
 	Random random = new Random();
-	Scanner entrada = new Scanner(System.in);
 	
 	private int larguraDasCasas;
 	private int alturaDasCasas;
