@@ -33,7 +33,6 @@ public class Tabuleiro extends Celula{
 		
 	}
 	
-
 	public void setLargura(int largura) {
 
 		this.larguraDasCasas = largura;
@@ -70,4 +69,5 @@ public class Tabuleiro extends Celula{
 		return this.timer;
 
    }
+	
 }
