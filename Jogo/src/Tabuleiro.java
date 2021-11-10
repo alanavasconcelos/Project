@@ -1,7 +1,7 @@
 
 import java.util.Random;
 
-public class Tabuleiro {
+public class Tabuleiro extends Celula{
 	
 	private int minas[][];
 	private char tabuleiro[][];

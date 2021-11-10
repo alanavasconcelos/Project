@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Celula extends Tabuleiro {
+public class Celula {
 
 	private boolean minada;
 	private boolean clicada;
