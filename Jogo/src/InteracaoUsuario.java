@@ -8,7 +8,6 @@ public class InteracaoUsuario {
 	
 	Scanner entrada = new Scanner(System.in);
 	
-	
 
 	public void setNomeDoJogador(String nomeDoJogador) {
 
@@ -21,11 +20,22 @@ public class InteracaoUsuario {
 		return this.nomeDoJogador;
 
 	}
-	  
-		public void exibe(){
+	
+	public void exibe(){
 			
 		}
-		public void exibeMinas(){
+	
+    public void setPosicao(int linha,int coluna){
+		
+		
+	}
+    
+	public int getPosicao(){
+		return 0;
+		
+	}
+	  	
+	public void exibeMinas(){
 			
 		}
 	

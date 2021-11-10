@@ -23,14 +23,6 @@ public class Tabuleiro extends Celula{
 	public void abrirVizinhas(){
 		
 	}
-	public void setPosicao(int linha,int coluna){
-		
-		
-	}
-	public int getPosicao(){
-		return 0;
-		
-	}
 	public void Dicas(){
 		
 	}

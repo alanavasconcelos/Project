@@ -11,7 +11,6 @@ public class Jogo {
 	private int numeroDeBandeirasAtivas;
 	private int dificuldade;
 	
-	
 	public Jogo(){
 		
 	}
