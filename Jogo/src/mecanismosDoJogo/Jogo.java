@@ -1,39 +1,73 @@
 package mecanismosDoJogo;
 
-public class Jogo {
+public abstract class Jogo {
 	
-	private boolean ganhou = false;
-	private int[] jogada;
-	private int rodada = 0;
-	private Tabuleiro board;
-	private int numeroDeBandeirasTotais;
-	private int numeroDeBandeirasAtivas;
+	private String nomeDoJogador;
 	private int dificuldade;
+	private int tipoDoJogo;
 	
-	public Jogo(){
-		
+	public Jogo(String nomeDoJogador, int dificuldade,int tipoDoJogo) {
+		this.nomeDoJogador = nomeDoJogador;
+		this.dificuldade = dificuldade;
+		this.tipoDoJogo = tipoDoJogo;
+	}
+
+	public void setNome(String nomeDoJogador) {
+		this.nomeDoJogador = nomeDoJogador;
 	}
 	
-	public void jogar(Tabuleiro board){
-		
+	public String getNome() {
+		return this.nomeDoJogador;
+	}
+	public void setDificuldade(int dificuldade) {
+		this.dificuldade = dificuldade;
+	}
+	public int getDificuldade(int dificuldade) {
+		return dificuldade;
+	}
+	public  void settipoDoJogo(int tipoDoJogo) {
+		this.tipoDoJogo = tipoDoJogo;
+	}
+	public int gettipoDoJogo(int tipoDoJogo) {
+		return tipoDoJogo;
 	}
 	
-	public void setNumeroDeBandeirasTotais(int numeroDeBandeirasTotais) {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
-		this.numeroDeBandeirasTotais = numeroDeBandeirasTotais;
+
+
+
+
+
+
+
+
+
+	//Utilizar o tempo em segundos
+	private int timer;
+	
+
+	public void setTempoMaximo(int segundosTotais) {
+
+		this.timer = segundosTotais;
 
 	}
 
-	public int getNumeroDeBandeirasSobrando() {
+	public int getTempoSobrando() {
 
-		return this.numeroDeBandeirasTotais - this.numeroDeBandeirasAtivas;
+		return this.timer;
 
-	}
-
-	public int getDificuldade() {
-
-		return this.dificuldade;
-
-	}
+   }
 
 }

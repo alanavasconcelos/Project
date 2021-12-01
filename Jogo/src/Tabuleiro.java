@@ -3,15 +3,13 @@ import java.util.Random;
 
 public class Tabuleiro extends Celula{
 	
-	private int minas[][];
-	private char tabuleiro[][];
+	Celula[][] tabuleiro;
 	
 	Random random = new Random();
 	
 	private int larguraDasCasas;
 	private int alturaDasCasas;
 	private int numeroDeMinas;
-	private	int minasProximas;
 	
 	//Utilizar o tempo em segundos
 	private int timer;
@@ -32,6 +30,37 @@ public class Tabuleiro extends Celula{
 	public void sorteiaMinas(){
 		
 	}
+	public int clicar(int linha, int coluna){
+        return tabuleiro[linha][coluna].clicar();
+    }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public void setLargura(int largura) {
 
@@ -71,3 +100,4 @@ public class Tabuleiro extends Celula{
    }
 	
 }
+
