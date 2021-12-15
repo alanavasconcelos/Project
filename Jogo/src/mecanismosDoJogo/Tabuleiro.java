@@ -79,7 +79,14 @@ public class Tabuleiro implements InterfaceTabuleiro{
 	public int clicar(int linha,int coluna ){
         return tabuleiro[linha][coluna].clicar();
     }
-
+	public boolean perdeu(){        
+        for (int i = 0; i < larguraDasCasas; i++) {
+            for (int j = 0; j < alturaDasCasas; j++) {
+                if (tabuleiro[i][j].getClicada() && tabuleiro[i][j].getMinada()) return true;
+            }            
+        }
+        return false;
+    }
 
 	public boolean venceu(){        
         for (int i = 0; i < larguraDasCasas; i++) {
@@ -90,18 +97,12 @@ public class Tabuleiro implements InterfaceTabuleiro{
         return true;
     }
 	
-	public boolean perdeu(){        
-        for (int i = 0; i < larguraDasCasas; i++) {
-            for (int j = 0; j < alturaDasCasas; j++) {
-                if (tabuleiro[i][j].getClicada() && tabuleiro[i][j].getMinada()) return true;
-            }            
-        }
-        return false;
-    }
+	
 	
 	public Celula getCelula(int linha, int coluna){
         return tabuleiro[linha][coluna];
     }
+    
 	
 	public String toString() {
         String string = "";

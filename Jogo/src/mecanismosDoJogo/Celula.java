@@ -2,13 +2,15 @@ package mecanismosDoJogo;
 
 import java.util.ArrayList;
 
+import interfaceGrafica.ButtonCelula;
+
 public class Celula {
 
 	private boolean minada;
 	private boolean clicada;
 	private boolean abertaEVazia;
 	private boolean marcada;
-	private boolean celulaMaluca;
+	
 	
 	private boolean abriuProximas;
 	private boolean ehBomba;
@@ -20,6 +22,8 @@ public class Celula {
 	
 	
 	ArrayList<Celula> vizinhas;
+	
+	private ButtonCelula button;
 	
 	//esse método vai adicionar as vizinhas de uma celula
 	public void adicionarVizinhas(Celula c){
@@ -33,7 +37,7 @@ public class Celula {
 		this.setMinada(false);
 		this.setClicada(false);
 		this.abertaEVazia =  false;
-		this.marcada =  false;
+		this.setMarcada(false);
 		this.vizinhas = new ArrayList<Celula>();
 		
 	}
@@ -52,6 +56,26 @@ public class Celula {
 	public boolean getMinada() {
 		return minada;
 	}
+	public void setMarcada(boolean marcada) {
+		this.marcada = marcada;
+	}
+	public boolean getMarcada() {
+		return marcada;
+	}
+	public void setVizinhas(ArrayList<Celula> vizinhas) {
+		this.vizinhas = vizinhas;
+	}
+	public ArrayList<Celula> getVizinhas() {
+		return vizinhas;
+	}
+
+	public void setButton(ButtonCelula button){
+        this.button = button;
+    }
+	public ButtonCelula getButton() {
+		return button;
+	}
+	
 
 	//método para minar, se não tiver minada ele mina e retorna true, caso já tenha mina retorna false
 	public boolean minar() {
@@ -69,8 +93,8 @@ public class Celula {
 	
 	//permite que ele marque e desmarque a bandeira
 	public boolean marcar(){
-	    this.marcada = !this.marcada;
-        return this.marcada;
+	    this.setMarcada(!this.getMarcada());
+        return this.getMarcada();
     }
 	public int numMinasNasVizinhas(){
 		
@@ -98,7 +122,7 @@ public class Celula {
 	}
 	
 	//Método percorre as minas próximas e checa se elas não tem uma bomba próxima, caso não tenha é salvo a posX e posY da célula em um array e enviado para o método clique
-	public void abreMinasProximas() {
+	/*public void abreMinasProximas() {
 		
 		int contador = 0;
 		
@@ -133,24 +157,31 @@ public class Celula {
 			
 		}
 		
-	}
+	}*/
 	
 	public void reset() {
         this.setMinada(false);
         this.abertaEVazia = false;
-        this.marcada = false;
+        this.setMarcada(false);
         this.setClicada(false);
     }
-	
 	public boolean finalizado() {
-        if(this.getMinada() && this.marcada) return true;
-        if(!this.getMinada() && !this.marcada && this.getClicada()) return true;
+        if(this.getMinada() && this.getMarcada()) {
+        	return true;
+        }
+        if(this.getClicada() && !this.getMinada() && !this.getMarcada()  ) {
+        	return true;
+        }
         return false;
     }	
+	
+	
 	
 	 public String toString() {
 	       if (this.minada)
 	            return "-1";
 	       return "+" + this.numMinasNasVizinhas();
 	    }
+
+	
 }
