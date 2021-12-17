@@ -2,7 +2,7 @@ package usuario;
 
 import mecanismosDoJogo.Jogo;
 import mecanismosDoJogo.AtributoInvalidoException;
-import mecanismosDoJogo.Ranking;
+
 import java.io.IOException;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
@@ -59,7 +59,7 @@ public class Serializacao {
 
 	public static Ranking carregaRanking() {
 
-		Ranking rankingCarregado = new Ranking("a", 0, true);
+		Ranking rankingCarregado = new Ranking();
 
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("ranking.ser"))) {
 

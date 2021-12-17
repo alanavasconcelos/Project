@@ -11,10 +11,8 @@ public class Principal {
 		InteracaoUsuario usuario = new InteracaoUsuario();
 		Jogo jogoAtual = new Jogo(true);
 		int escolha;
-		boolean salvarJogo;
-		long startTime;
-
-		startTime = System.currentTimeMillis();
+		long tempo;
+		boolean salvarJogo = false;
 
 		usuario.setIniciarNovoJogo();
 		escolha = usuario.getIniciarNovoJogo();
@@ -24,26 +22,28 @@ public class Principal {
 			jogoAtual = new Jogo(false);
 			salvarJogo = jogoAtual.iniciarJogo(false);
 
-			if (salvarJogo) {
-
-				jogoAtual.finalizaContador(startTime);
-
-				Serializacao.salvaJogo(jogoAtual);
-				usuario.imprimeMensagem("Jogo salvo com sucesso");
-
-			}
-
 		} else if (escolha == 2) {
 
 			jogoAtual = Serializacao.carregaJogo();
-			jogoAtual.iniciarJogo(true);
+			salvarJogo = jogoAtual.iniciarJogo(true);
 
 		} else {
 
+			jogoAtual = new Jogo(true);
+			jogoAtual.mostraRanking();
+
 		}
 
-		jogoAtual.finalizaContador(startTime);
+		if (salvarJogo) {
 
+			tempo = System.currentTimeMillis() / 1000;
+			jogoAtual.setTempo((int) tempo);
+
+			Serializacao.salvaJogo(jogoAtual);
+			usuario.imprimeMensagem("Jogo salvo com sucesso");
+
+		}
+		
 	}
 
 }

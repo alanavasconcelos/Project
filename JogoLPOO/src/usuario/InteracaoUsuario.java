@@ -77,12 +77,18 @@ public class InteracaoUsuario implements Serializable {
 
 	}
 
+	public void imprimeRanking(Ranking ranking) {
+
+		System.out.print(ranking);
+
+	}
+
 	public void setIniciarNovoJogo() throws AtributoInvalidoException {
 
 		int escolha = 0;
 
 		System.out.println("Deseja iniciar um novo jogo ou continuar um já em andamento?\n1- Iniciar novo jogo     "
-				+ "2- Continuar jogo em andamento     3- Abrir o ranking de tempos(não finalizado)");
+				+ "2- Continuar jogo em andamento     3- Abrir o ranking de tempos");
 
 		try {
 
@@ -359,6 +365,41 @@ public class InteracaoUsuario implements Serializable {
 		}
 
 		return coluna;
+
+	}
+
+	public boolean verRanking() throws AtributoInvalidoException {
+
+		int escolha = 0;
+
+		System.out.println("Deseja ver o ranking\n1- Sim     2- Não?");
+
+		try {
+
+			escolha = entrada.nextInt();
+
+		} catch (Exception e) {
+
+			System.err.println("Digite um inteiro entre os disponíveis\n\n");
+
+		}
+
+		if (escolha <= 0 || escolha > 2) {
+
+			AtributoInvalidoException e = new AtributoInvalidoException("Insira o inteiro que acompanha sua escolha");
+			throw e;
+
+		}
+
+		if (escolha == 1) {
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
 
 	}
 

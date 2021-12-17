@@ -1,7 +1,7 @@
 package mecanismosDoJogo;
 
 import interfaceGrafica.*;
-import usuario.InteracaoUsuario;
+import usuario.*;
 import java.io.Serializable;
 
 public class Jogo implements Serializable {
@@ -14,15 +14,20 @@ public class Jogo implements Serializable {
 	private double maluquice;
 	private boolean ehMaluco;
 	private int tempo = 0;
+	public long tempoInicial;
 	private Tabuleiro tabuleiro;
 	private TelaTabuleiro telaTabuleiro;
 	private InteracaoUsuario usuario;
 	private String nome;
+	private Ranking ranking = new Ranking();
+	private Pessoa jogadorAtual;
 
 	public Jogo(boolean vazio) throws AtributoInvalidoException {
 
+		this.ranking = Serializacao.carregaRanking();
+		this.usuario = new InteracaoUsuario();
+
 		if (!vazio) {
-			this.usuario = new InteracaoUsuario();
 
 			this.usuario.setNomeDoJogador();
 			this.nome = this.usuario.getNomeDoJogador();
@@ -72,7 +77,7 @@ public class Jogo implements Serializable {
 
 				coluna = 9;
 				linha = 9;
-				bombas = 10;
+				bombas = 1;
 
 			} else if (this.dificuldade == 2) {
 
@@ -126,6 +131,8 @@ public class Jogo implements Serializable {
 		int vaiMarcar = 0;
 		int venceu = 0;
 
+		this.tempoInicial = System.currentTimeMillis();
+
 		if (jogoCarregado) {
 
 			this.usuario = new InteracaoUsuario();
@@ -145,6 +152,7 @@ public class Jogo implements Serializable {
 
 			if (vaiMarcar == 3) {
 
+				finalizaContador(this.tempoInicial);
 				return true;
 
 			}
@@ -178,11 +186,22 @@ public class Jogo implements Serializable {
 				this.usuario.imprimeEnter(3);
 				this.usuario.imprimeTabuleiroAtual(this.tabuleiro);
 				this.usuario.imprimeMensagem("Você venceu");
+
+				finalizaContador(this.tempoInicial);
+				jogadorAtual = new Pessoa(this.nome, this.tempo);
+				atualizaRanking(this.jogadorAtual);
+
 				jogando = false;
 
 			}
 
 		} while (jogando);
+
+		if (this.usuario.verRanking()) {
+
+			mostraRanking();
+
+		}
 
 		return false;
 
@@ -194,7 +213,20 @@ public class Jogo implements Serializable {
 		tempoTotal /= 1000;
 
 		this.setTempo((int) tempoTotal);
-		;
+
+	}
+
+	public void atualizaRanking(Pessoa jogador) {
+
+		this.ranking.adicionaPessoa(jogador);
+		this.ranking.organizaFila();
+		Serializacao.salvaRanking(this.ranking);
+
+	}
+
+	public void mostraRanking() {
+
+		this.usuario.imprimeRanking(this.ranking);
 
 	}
 
@@ -204,9 +236,9 @@ public class Jogo implements Serializable {
 
 	}
 
-	public int getTempo() {
+	public Ranking getRanking() {
 
-		return this.tempo;
+		return this.ranking;
 
 	}
 
